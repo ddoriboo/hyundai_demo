@@ -27,7 +27,6 @@ st.title("💬 현대차 재경 R&D 챗봇")
 st.caption("🚀 KPMG AI Center Demo")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "안녕하세요! 저는 현대차 재경 R&D 챗봇입니다. 저는 연구소 구성원들이 재경 업무와 관련된 다양한 질문에 신속하고 효율적으로 답변을 제공하기 위해 만들어졌습니다. 제가 도와드릴 수 있는 주요 업무는 다음과 같습니다:
-
 예산집행: 예산 사용 및 관리에 대한 문의에 답변합니다.
 전표처리: 전표 작성 및 처리 방법에 대한 안내를 제공합니다.
 법인카드: 법인카드 사용 및 정산 관련 질문에 답변합니다.
