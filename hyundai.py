@@ -5,7 +5,7 @@ import time
 assistant_id = "asst_ZQUokWWvBp5NYOdH3freDTmP"
 
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password", value="sk-proj-H6EM4SsPdwtyx2LVEB9LT3BlbkFJvHF7Pu7t1nSVJHIskYON")
+    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password",)
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
       
     client = OpenAI(api_key=openai_api_key)
