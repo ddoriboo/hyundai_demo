@@ -6,6 +6,18 @@ import time
 assistant_id = "asst_LJs7l9poywJbU1budhcWY2Tp"
 
 st.set_page_config(page_title="KPMG Demo", page_icon="✨", layout="wide")
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 with st.sidebar:
     
@@ -26,7 +38,7 @@ with st.sidebar:
         st.subheader(f"{thread_id}", divider="rainbow")
         st.info("스레드가 생성되었습니다.")
 
-st.title("💬 현대차 재경 R&D 챗봇")
+st.title("💬🚗🔍 현대차 재경 R&D 챗봇")
 st.caption("🚀 KPMG AI Center Demo")
 
 
@@ -62,7 +74,8 @@ if prompt := st.chat_input():
     
     run = client.beta.threads.runs.create(
        thread_id=thread_id,
-     assistant_id=assistant_id
+     assistant_id=assistant_id,
+     tools=[{"type": "file_search"}],
      )
     
     run_id = run.id
