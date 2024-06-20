@@ -2,11 +2,14 @@ from openai import OpenAI
 import streamlit as st
 import time
 
-assistant_id = "asst_ZQUokWWvBp5NYOdH3freDTmP"
+
+assistant_id = "asst_LJs7l9poywJbU1budhcWY2Tp"
+
+st.set_page_config(page_title="KPMG Demo", page_icon="✨", layout="wide")
 
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password",)
-    "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+    
+    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
       
     client = OpenAI(api_key=openai_api_key)
 
@@ -25,6 +28,14 @@ with st.sidebar:
 
 st.title("💬 현대차 재경 R&D 챗봇")
 st.caption("🚀 KPMG AI Center Demo")
+
+
+def stream_response(text):
+    for char in text:
+        with st.chat_message("assistant"):
+            st.markdown(char)
+            time.sleep(0.05)
+
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "안녕하세요! 저는 현대차 재경 R&D 챗봇입니다. 예산집행, 전표처리, 법인카드, 정부과제, 고정자산 관리 및 처리 방법에 대해 안내합니다."}]
 
@@ -75,9 +86,3 @@ if prompt := st.chat_input():
 
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
-
-    
-    #response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
-    #msg = response.choices[0].message.content
-    #st.session_state.messages.append({"role": "assistant", "content": msg})
-    #st.chat_message("assistant").write(msg)
